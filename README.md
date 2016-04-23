@@ -6,3 +6,5 @@ This program has two parts:
 2. The application itself, consisting of index.html and js/main.js.
 
 To update the application's champion data, copy the JSON object output by scrapechampions.php into js/main.js (line 3).
+
+At the time of this writing, I have hosted a copy of this application at http://benmakesgames.com/lolplayground/
