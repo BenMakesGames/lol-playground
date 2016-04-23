@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app="lolPlaygroundApp"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+			<div id="body">
+				
+        <div id="contents" ng-controller="lolSearchCtrl">
+					<p>Use stats for level <select ng-model="level">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+						<option value="13">13</option>
+						<option value="14">14</option>
+						<option value="15">15</option>
+						<option value="16">16</option>
+						<option value="17">17</option>
+						<option value="18" selected>18</option>
+					</select>.</p>
+
+					<table class="search">
+						<tbody>
+							<tr ng-repeat="filter in filters">
+								<td><a href="#" class="button-delete" ng-click="removeFilter($index)">X</a></d>
+								<td><select ng-model="filter.field">
+									<option value="health">Health</option>
+									<option value="mana">Mana</option>
+									<option value="attack_damage">Attack Damage</option>
+									<option value="attack_speed">Attack Speed</option>
+									<option value="range">Attack Range</option>
+									<option value="armor">Armor</option>
+									<option value="magic_res">Magic Res.</option>
+									<option value="move_speed">Move Speed</option>
+								</select></td>
+								<td><select ng-model="filter.comparison">
+									<option value="gte">&gt;=</option>
+									<option value="gt">&gt;</option>
+									<option value="lte">&lt;=</option>
+									<option value="lt">&lt;</option>
+									<option value="eq">=</option>
+								</select></td>
+								<td><input type="number" ng-model="filter.value"></td>
+							</tr>
+						</tbody>
+					</table>
+					<p><a href="#" class="button" ng-click="addFilter()">Add Filter</a></p>
+
+					<table class="data">
+						<thead>
+							<tr>
+								<th>Champion</th><th>Health</th><th>Mana</th><th>Attack Damage</th><th>Attack Speed</th><th>Attack Range</th><th>Armor</th><th>Magic Res.</th><th>Move Speed</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="champion in championData | championFilter:filters">
+								<td><a href="http://leagueoflegends.wikia.com/wiki/{{ champion.name }}">{{ champion.name }}</a></td>
+								<td>{{ champion.health() }}</td>
+								<td>{{ champion.mana() }}</td>
+								<td>{{ champion.attack_damage() }}</td>
+								<td>{{ champion.attack_speed() }}</td>
+								<td>{{ champion.range() }}</td>
+								<td>{{ champion.armor() }}</td>
+								<td>{{ champion.magic_res() }}</td>
+								<td>{{ champion.move_speed() }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+      <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+      <script src="js/vendor/angular.min.js"></script>
+			<script src="js/main.js"></script>
+    </body>
+</html>
