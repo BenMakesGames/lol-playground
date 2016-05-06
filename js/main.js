@@ -86,6 +86,8 @@ lolPlaygroundApp.controller('lolSearchCtrl', function lolSearchCtrl($scope) {
 	
 	var i, j, champion, attackSpeed;
 
+	$scope.championSort = 'name';
+	$scope.sortReversed = false;
 	$scope.filters = [];
 	$scope.level = 18;
 
@@ -95,7 +97,7 @@ lolPlaygroundApp.controller('lolSearchCtrl', function lolSearchCtrl($scope) {
 			health: function() { return Math.round(champion.health * 100 + champion.health_per_level * ($scope.level - 1) * 100) / 100; },
 			mana: function() { return Math.round(champion.mana * 100 + champion.mana_per_level * ($scope.level - 1) * 100) / 100; },
 			attack_damage: function() { return Math.round(champion.attack_damage * 100 + champion.attack_damage_per_level * ($scope.level - 1) * 100) / 100; },
-			attack_speed: function() { return Math.round(champion.attack_speed * 1 + ((champion.attack_speed / 100) * ($scope.level - 1)) * 10000) / 10000; },
+			attack_speed: function() { return Math.round(champion.attack_speed * (1 + ((champion.attack_speed_per_level / 100) * ($scope.level - 1))) * 10000) / 10000; },
 			range: function() { return champion.range; },
 			armor: function() { return Math.round(champion.armor * 100 + champion.armor_per_level * ($scope.level - 1) * 100) / 100; },
 			magic_res: function() { return Math.round(champion.magic_res * 100 + champion.magic_res_per_level * ($scope.level - 1) * 100) / 100; },
@@ -103,8 +105,6 @@ lolPlaygroundApp.controller('lolSearchCtrl', function lolSearchCtrl($scope) {
 		});
 	});
 	
-	console.log($scope.championData);
-
 	$scope.addFilter = function() {
 		$scope.filters.push({
 			field: 'health',
@@ -116,6 +116,11 @@ lolPlaygroundApp.controller('lolSearchCtrl', function lolSearchCtrl($scope) {
 	$scope.removeFilter = function(index) {
 		if(index >= 0 && index < $scope.filters.length)
 			$scope.filters.splice(index, 1);
+	};
+	
+	$scope.sortBy = function(field) {
+		$scope.sortReversed = ($scope.championSort === field) ? !$scope.sortReversed : false;
+		$scope.championSort = field;
 	};
 	
 });

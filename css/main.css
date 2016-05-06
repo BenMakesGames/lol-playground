@@ -148,6 +148,19 @@ table.data tbody tr:nth-child(2n)
 	text-decoration: none;
 }
 
+table > thead > tr > th > a
+{
+	color: #fff;
+}
+
+.sortorder:after {
+  content: '\25b2';
+}
+
+.sortorder.reverse:after {
+  content: '\25bc';
+}
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */

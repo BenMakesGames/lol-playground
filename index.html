@@ -74,11 +74,19 @@
 					<table class="data">
 						<thead>
 							<tr>
-								<th>Champion</th><th>Health</th><th>Mana</th><th>Attack Damage</th><th>Attack Speed</th><th>Attack Range</th><th>Armor</th><th>Magic Res.</th><th>Move Speed</th>
+								<th><a href="#" ng-click="sortBy('name')">Champion <span class="sortorder" ng-show="championSort == 'name'" ng-class="{reverse:sortReversed}"></span></a></th>
+								<th><a href="#" ng-click="sortBy('health()')">Health <span class="sortorder" ng-show="championSort == 'health()'" ng-class="{reverse:sortReversed}"></span></a></th>
+								<th><a href="#" ng-click="sortBy('mana()')">Mana <span class="sortorder" ng-show="championSort == 'mana()'" ng-class="{reverse:sortReversed}"></span></a></th>
+								<th><a href="#" ng-click="sortBy('attack_damage()')">Attack Damage <span class="sortorder" ng-show="championSort == 'attack_damage()'" ng-class="{reverse:sortReversed}"></span></a></th>
+								<th><a href="#" ng-click="sortBy('attack_speed()')">Attack Speed <span class="sortorder" ng-show="championSort == 'attack_speed()'" ng-class="{reverse:sortReversed}"></span></a></th>
+								<th><a href="#" ng-click="sortBy('range()')">Attack Range <span class="sortorder" ng-show="championSort == 'range()'" ng-class="{reverse:sortReversed}"></span></a></th>
+								<th><a href="#" ng-click="sortBy('armor()')">Armor <span class="sortorder" ng-show="championSort == 'armor()'" ng-class="{reverse:sortReversed}"></span></a></th>
+								<th><a href="#" ng-click="sortBy('magic_res()')">Magic Res. <span class="sortorder" ng-show="championSort == 'magic_res()'" ng-class="{reverse:sortReversed}"></span></a></th>
+								<th><a href="#" ng-click="sortBy('move_speed()')">Move Speed <span class="sortorder" ng-show="championSort == 'move_speed()'" ng-class="{reverse:sortReversed}"></span></a></th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-repeat="champion in championData | championFilter:filters">
+							<tr ng-repeat="champion in championData | championFilter:filters | orderBy:championSort:sortReversed">
 								<td><a href="http://leagueoflegends.wikia.com/wiki/{{ champion.name }}">{{ champion.name }}</a></td>
 								<td>{{ champion.health() }}</td>
 								<td>{{ champion.mana() }}</td>
