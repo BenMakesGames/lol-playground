@@ -89,17 +89,17 @@ foreach($championNames as $championName)
 		{
 			case 'health':
 				$healthPerLevel = (float)substr($value, strpos($value, '(') + 1);
-				$health = (float)$value + $healthPerLevel;
+				$health = (float)$value;
 				break;
 			
 			case 'attack damage':
 				$ADPerLevel = (float)substr($value, strpos($value, '(') + 1);
-				$AD = (float)$value + $ADPerLevel;
+				$AD = (float)$value;
 				break;
 			
 			case 'health regen.':
 				$healthRegenPerLevel = (float)substr($value, strpos($value, '(') + 1);
-				$healthRegen = (float)$value + $healthRegenPerLevel;
+				$healthRegen = (float)$value;
 				break;
 			
 			// again, attack speed is special: it's level-1 value is given, instead of its level-0,
@@ -111,7 +111,7 @@ foreach($championNames as $championName)
 			
 			case 'mana':
 				$manaPerLevel = (float)substr($value, strpos($value, '(') + 1);
-				$mana = (float)$value + $manaPerLevel;
+				$mana = (float)$value;
 				$resourceName = 'mana';
 				break;
 			
@@ -165,12 +165,12 @@ foreach($championNames as $championName)
 			
 			case 'armor':
 				$armorPerLevel = (float)substr($value, strpos($value, '(') + 1);
-				$armor = (float)$value + $armorPerLevel;
+				$armor = (float)$value;
 				break;
 			
 			case 'mana regen.':
 				$manaRegenPerLevel = (float)substr($value, strpos($value, '(') + 1);
-				$manaRegen = (float)$value + $manaRegenPerLevel;
+				$manaRegen = (float)$value;
 				break;
 			
 			case 'energy regen.':
@@ -178,7 +178,7 @@ foreach($championNames as $championName)
 			
 			case 'magic res.':
 				$magicResPerLevel = (float)substr($value, strpos($value, '(') + 1);
-				$magicRes = (float)$value + $magicResPerLevel;
+				$magicRes = (float)$value;
 				break;
 			
 			case 'ranged':
