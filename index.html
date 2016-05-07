@@ -72,6 +72,7 @@
 					<table class="data">
 						<thead>
 							<tr>
+								<th></th>
 								<th><a href="#" ng-click="sortBy('name')">Champion <span class="sortorder" ng-show="championSort == 'name'" ng-class="{reverse:sortReversed}"></span></a></th>
 								<th><a href="#" ng-click="sortBy('health()')">Health <span class="sortorder" ng-show="championSort == 'health()'" ng-class="{reverse:sortReversed}"></span></a></th>
 								<th><a href="#" ng-click="sortBy('mana()')">Mana <span class="sortorder" ng-show="championSort == 'mana()'" ng-class="{reverse:sortReversed}"></span></a></th>
@@ -85,6 +86,7 @@
 						</thead>
 						<tbody>
 							<tr ng-repeat="champion in championData | championFilter:filters | orderBy:championSort:sortReversed">
+								<td class="count">{{ $index + 1 }}<small>/{{ (championData | championFilter:filters).length }}</small></td>
 								<td><a href="http://leagueoflegends.wikia.com/wiki/{{ champion.name }}">{{ champion.name }}</a></td>
 								<td>{{ champion.health() }}</td>
 								<td>{{ champion.mana() }}</td>
